@@ -42,3 +42,5 @@ User.create = (user,resut) =>{
         }
     )
 }
+
+module.exports = User;
