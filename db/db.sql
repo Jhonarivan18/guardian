@@ -1,5 +1,24 @@
-USE guardian
-CREATE TABLE IF NOT EXISTS `softvigilan3`.`empresa` (
+USE delivery;
+create table users(
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	name VARCHAR(90) NOT NULL,
+	lastname VARCHAR(90) NOT NULL,
+	phone VARCHAR(90) NOT NULL UNIQUE,
+	image VARCHAR(255) NULL,
+    password VARCHAR(90) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL
+)	
+
+
+
+
+
+
+
+/* USE guardian
+CREATE TABLE IF NOT EXISTS `guardian`.`empresa` (
   `nitempresa` INT NOT NULL,
   `nombre_empresa` VARCHAR(45) NULL,
   PRIMARY KEY (`nitempresa`))
@@ -7,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `softvigilan3`.`usuario`
+-- Table `guardian`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `softvigilan3`.`usuario` (
+CREATE TABLE IF NOT EXISTS `guardian`.`usuario` (
   `idvigilantes` INT NOT NULL AUTO_INCREMENT,
   `nomb_vigi` VARCHAR(45) NULL,
   `celular_vigi` BIGINT(19) NULL UNIQUE,
@@ -22,16 +41,16 @@ CREATE TABLE IF NOT EXISTS `softvigilan3`.`usuario` (
   INDEX `fk_usuario_empresa1_idx` (`empresa_nitempresa` ASC) ,
   CONSTRAINT `fk_usuario_empresa1`
     FOREIGN KEY (`empresa_nitempresa`)
-    REFERENCES `softvigilan3`.`empresa` (`nitempresa`)
+    REFERENCES `guardian`.`empresa` (`nitempresa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `softvigilan3`.`propietario_dispositivos`
+-- Table `guardian`.`propietario_dispositivos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `softvigilan3`.`propietario_dispositivos` (
+CREATE TABLE IF NOT EXISTS `guardian`.`propietario_dispositivos` (
   `id_num_documento` INT NOT NULL,
   `nombre_usuario` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -45,16 +64,16 @@ CREATE TABLE IF NOT EXISTS `softvigilan3`.`propietario_dispositivos` (
   INDEX `fk_propietario_dispositivos_usuarios1_idx` (`usuarios_idvigilantes` ASC) ,
   CONSTRAINT `fk_propietario_dispositivos_usuarios1`
     FOREIGN KEY (`usuarios_idvigilantes`)
-    REFERENCES `softvigilan3`.`usuario` (`idvigilantes`)
+    REFERENCES `guardian`.`usuario` (`idvigilantes`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `softvigilan3`.`dispositivos`
+-- Table `guardian`.`dispositivos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `softvigilan3`.`dispositivos` (
+CREATE TABLE IF NOT EXISTS `guardian`.`dispositivos` (
   `serial_dispositivo` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `color_dispositivo` VARCHAR(45) NOT NULL,
@@ -64,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `softvigilan3`.`dispositivos` (
   INDEX `fk_dispositivos_propietario_dispositivos_idx` (`propietario_dispositivos_id_num_documento` ASC) ,
   CONSTRAINT `fk_dispositivos_propietario_dispositivos`
     FOREIGN KEY (`propietario_dispositivos_id_num_documento`)
-    REFERENCES `softvigilan3`.`propietario_dispositivos` (`id_num_documento`)
+    REFERENCES `guardian`.`propietario_dispositivos` (`id_num_documento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+ */
