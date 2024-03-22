@@ -3,7 +3,8 @@ const User = require('../models/user');
 module.exports = {
 
     register (res,req){
-        const user = req.body;
+        
+        const user = req.body; // CAPTURA DE LOS DATOS DEL CLIENTE
         User.create(user,(err,data) =>{
 
             if (err) {
@@ -17,7 +18,7 @@ module.exports = {
             return res.status(201).json({
                 success: true,
                 message: 'el registro se realizo correctamente',
-                data: data
+                data: data // ID DEL NUEVEO USUARIO REGISTRADO
             });
         });
     }
